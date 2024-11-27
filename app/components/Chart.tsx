@@ -148,9 +148,9 @@ const Chart = ({ data, chartType }: ChartProps) => {
           {chartType === 'line' ? 'Line Chart' : 'Bar Chart'}
         </h2>
         {chartType === 'line' ? (
-          <Line data={chartData} options={options as any} />
+          <Line data={chartData} options={options} />
         ) : (
-          <Bar data={chartData} options={options as any} />
+          <Bar data={chartData} options={options} />
         )}
       </div>
     </div>

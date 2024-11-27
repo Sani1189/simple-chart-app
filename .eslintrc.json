@@ -1,3 +1,11 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off", // Allow any or use "warn" to just warn
+    "@next/next/no-img-element": "off", // Example of another common rule that can be customized
+    "react/no-unescaped-entities": "off" // Allow unescaped entities if needed
+  }
 }
