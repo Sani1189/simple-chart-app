@@ -1,5 +1,5 @@
 'use client';
-import { TooltipItem } from 'chart.js'; 
+import { TooltipItem, ChartOptions } from 'chart.js';
 import { useEffect, useState } from 'react';
 import { Line, Bar } from 'react-chartjs-2';
 import {
@@ -54,7 +54,12 @@ const Chart = ({ data, chartType }: ChartProps) => {
   const [chartData, setChartData] = useState<ChartData | null>(null);
 
   useEffect(() => {
-    if (data && data.dates.length > 0 && data.sales.length > 0 && data.expenses.length > 0) {
+    if (
+      data &&
+      data.dates.length > 0 &&
+      data.sales.length > 0 &&
+      data.expenses.length > 0
+    ) {
       const preparedChartData: ChartData = {
         labels: data.dates,
         datasets: [
@@ -88,7 +93,7 @@ const Chart = ({ data, chartType }: ChartProps) => {
     );
   }
 
-  const options = {
+  const options: ChartOptions<'line' | 'bar'> = {
     responsive: true,
     plugins: {
       legend: {
@@ -99,8 +104,12 @@ const Chart = ({ data, chartType }: ChartProps) => {
       },
       tooltip: {
         callbacks: {
-          title: (context: TooltipItem<'line'>[]) => `Date: ${context[0].label}`,
-          label: (context: TooltipItem<'line'>) => `${context.dataset.label}: ${context.raw}`,
+          title: (context: TooltipItem<'line' | 'bar'>[]) => {
+            if (context[0]) return `Date: ${context[0].label}`;
+            return '';
+          },
+          label: (context: TooltipItem<'line' | 'bar'>) =>
+            `${context.dataset.label}: ${context.raw}`,
         },
       },
       zoom: {
@@ -135,7 +144,7 @@ const Chart = ({ data, chartType }: ChartProps) => {
       },
     },
     interaction: {
-      mode: 'nearest',
+      mode: 'nearest' as const, // Explicitly assign 'nearest'
       axis: 'x',
       intersect: false,
     },
