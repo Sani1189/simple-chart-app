@@ -36,14 +36,13 @@ interface ChartProps {
   chartType: 'line' | 'bar';
 }
 
-// Extend the dataset type to include additional properties like `pointRadius` and `pointHoverRadius`.
 interface ExtendedDataset {
   label: string;
   data: number[];
   borderColor: string;
   backgroundColor: string;
-  pointRadius?: number; // Optional for bar charts
-  pointHoverRadius?: number; // Optional for bar charts
+  pointRadius?: number;
+  pointHoverRadius?: number;
 }
 
 interface ChartData {
@@ -62,16 +61,16 @@ const Chart = ({ data, chartType }: ChartProps) => {
           {
             label: 'Sales',
             data: data.sales,
-            borderColor: 'rgb(0, 102, 204)', // Deep blue for Sales
-            backgroundColor: 'rgba(0, 102, 204, 0.6)', // Rich blue with moderate opacity
-            pointRadius: chartType === 'line' ? 5 : undefined, // Add point radius only for line charts
-            pointHoverRadius: chartType === 'line' ? 8 : undefined, // Add hover radius only for line charts
+            borderColor: 'rgb(0, 102, 204)',
+            backgroundColor: 'rgba(0, 102, 204, 0.6)',
+            pointRadius: chartType === 'line' ? 5 : undefined,
+            pointHoverRadius: chartType === 'line' ? 8 : undefined,
           },
           {
             label: 'Expenses',
             data: data.expenses,
-            borderColor: 'rgb(204, 0, 0)', // Deep red for Expenses
-            backgroundColor: 'rgba(204, 0, 0, 0.6)', // Rich red with moderate opacity
+            borderColor: 'rgb(204, 0, 0)',
+            backgroundColor: 'rgba(204, 0, 0, 0.6)',
             pointRadius: chartType === 'line' ? 5 : undefined,
             pointHoverRadius: chartType === 'line' ? 8 : undefined,
           },
@@ -95,7 +94,7 @@ const Chart = ({ data, chartType }: ChartProps) => {
       legend: {
         display: true,
         labels: {
-          color: '#374151', // Dark gray for legend text
+          color: '#374151',
         },
       },
       tooltip: {
@@ -107,17 +106,17 @@ const Chart = ({ data, chartType }: ChartProps) => {
       zoom: {
         pan: {
           enabled: true,
-          mode: 'x', // Allow panning only horizontally
-          modifierKey: 'ctrl', // Use Ctrl key to activate panning
+          mode: 'x',
+          modifierKey: 'ctrl',
         },
         zoom: {
           wheel: {
-            enabled: true, // Enable zooming with the mouse wheel
+            enabled: true,
           },
           pinch: {
-            enabled: true, // Enable zooming on touch devices
+            enabled: true,
           },
-          mode: 'x', // Restrict zooming to the X-axis
+          mode: 'x',
         },
       },
     },
@@ -125,13 +124,13 @@ const Chart = ({ data, chartType }: ChartProps) => {
       x: {
         title: { display: true, text: 'Date', color: '#374151' },
         grid: {
-          color: 'rgba(209, 213, 219, 0.3)', // Light gray grid
+          color: 'rgba(209, 213, 219, 0.3)',
         },
       },
       y: {
         title: { display: true, text: 'Amount', color: '#374151' },
         grid: {
-          color: 'rgba(209, 213, 219, 0.3)', // Light gray grid
+          color: 'rgba(209, 213, 219, 0.3)',
         },
       },
     },
