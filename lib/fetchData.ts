@@ -1,4 +1,4 @@
-type DataRange = 'last7Days' | 'last30Days';
+type DataRange = 'last7Days' | 'last30Days' | 'last50Days' | 'last100Days';
 
 // Simulating fetching random data based on the selected date range
 export const fetchDataByRange = async (range: DataRange) => {
@@ -17,6 +17,14 @@ const generateRandomData = (range: DataRange) => {
   } else if (range === 'last30Days') {
     startDate = new Date(now);
     startDate.setDate(now.getDate() - 30);
+  }
+  else if (range === 'last50Days') {
+    startDate = new Date(now);
+    startDate.setDate(now.getDate() - 50);
+  }
+  else if (range === 'last100Days') {
+    startDate = new Date(now);
+    startDate.setDate(now.getDate() - 100);
   } else {
     startDate = new Date(now);
   }

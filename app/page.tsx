@@ -8,7 +8,7 @@ import ChartToggle from './components/ChartToggle';
 
 const Chart = dynamic(() => import('./components/Chart'), { ssr: false });
 
-type DateRange = 'last7Days' | 'last30Days';
+type DateRange = 'last7Days' | 'last30Days' | 'last50Days' | 'last100Days';
 
 interface DataPoint {
   date: string;

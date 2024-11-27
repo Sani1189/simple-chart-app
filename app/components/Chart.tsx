@@ -144,7 +144,7 @@ const Chart = ({ data, chartType }: ChartProps) => {
       },
     },
     interaction: {
-      mode: 'nearest' as const, // Explicitly assign 'nearest'
+      mode: 'nearest' as const, 
       axis: 'x',
       intersect: false,
     },

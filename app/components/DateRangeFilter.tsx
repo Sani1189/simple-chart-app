@@ -1,5 +1,5 @@
 // components/DateRangeFilter.tsx
-type DateRange = 'last7Days' | 'last30Days';
+type DateRange = 'last7Days' | 'last30Days' | 'last50Days' | 'last100Days';
 
 interface DateRangeFilterProps {
   onChange: (range: DateRange) => void;
@@ -25,6 +25,9 @@ const DateRangeFilter = ({ onChange }: DateRangeFilterProps) => {
       >
         <option value="last7Days">Last 7 Days</option>
         <option value="last30Days">Last 30 Days</option>
+        <option value="last50Days">Last 50 Days</option>
+        <option value="last100Days">Last 100 Days</option>
+  
       </select>
     </div>
   );
