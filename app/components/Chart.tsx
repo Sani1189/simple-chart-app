@@ -1,5 +1,5 @@
 'use client';
-
+import { TooltipItem } from 'chart.js'; 
 import { useEffect, useState } from 'react';
 import { Line, Bar } from 'react-chartjs-2';
 import {
@@ -99,8 +99,8 @@ const Chart = ({ data, chartType }: ChartProps) => {
       },
       tooltip: {
         callbacks: {
-          title: (context: any) => `Date: ${context[0].label}`,
-          label: (context: any) => `${context.dataset.label}: ${context.raw}`,
+          title: (context: TooltipItem<'line'>[]) => `Date: ${context[0].label}`,
+          label: (context: TooltipItem<'line'>) => `${context.dataset.label}: ${context.raw}`,
         },
       },
       zoom: {

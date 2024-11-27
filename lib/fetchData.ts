@@ -2,17 +2,15 @@ type DataRange = 'last7Days' | 'last30Days';
 
 // Simulating fetching random data based on the selected date range
 export const fetchDataByRange = async (range: DataRange) => {
-  // Simulate generating data for the selected range
-  const data = generateRandomData(range);  // This is the data we get from the helper function
+  const data = generateRandomData(range); 
   return data;
 };
 
-// Helper function to generate random data based on the date range
 const generateRandomData = (range: DataRange) => {
   const now = new Date();
   let startDate;
 
-  // Determine the start date based on the selected range
+
   if (range === 'last7Days') {
     startDate = new Date(now);
     startDate.setDate(now.getDate() - 7);
@@ -20,32 +18,31 @@ const generateRandomData = (range: DataRange) => {
     startDate = new Date(now);
     startDate.setDate(now.getDate() - 30);
   } else {
-    // 'custom' range can be handled here (you can extend it as needed)
     startDate = new Date(now);
   }
 
-  // Generate random data for sales and expenses
+
   const randomData: { date: string; sales: number; expenses: number }[] = [];
-  const labels = generateDateLabels(startDate, now);  // Generate labels for the range
+  const labels = generateDateLabels(startDate, now); 
 
   labels.forEach((label) => {
     randomData.push({
       date: label,
-      sales: Math.floor(Math.random() * 1000) + 100, // Random sales between 100 and 1000
-      expenses: Math.floor(Math.random() * 500) + 50, // Random expenses between 50 and 500
+      sales: Math.floor(Math.random() * 1000) + 100,
+      expenses: Math.floor(Math.random() * 500) + 50,
     });
   });
 
-  return { randomData }; // Returning labels and the newly named randomData
+  return { randomData }; 
 };
 
-// Generate date labels (e.g., daily labels for the last 7 days)
 const generateDateLabels = (startDate: Date, endDate: Date) => {
   const labels = [];
-  let currentDate = new Date(startDate);
+  const currentDate = new Date(startDate);
+
   while (currentDate <= endDate) {
     labels.push(formatDate(currentDate));
-    currentDate.setDate(currentDate.getDate() + 1); // Increment by one day
+    currentDate.setDate(currentDate.getDate() + 1); 
   }
   return labels;
 };
